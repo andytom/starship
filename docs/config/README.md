@@ -263,7 +263,7 @@ is read from the `AWSU_PROFILE` env var.
 | `symbol`         | `"☁️ "`                                            | The symbol used before displaying the current AWS profile.      |
 | `region_aliases` |                                                   | Table of region aliases to display in addition to the AWS name. |
 | `style`          | `"bold yellow"`                                   | The style for the module.                                       |
-| `disabled`       | `false`                                           | Disables the `aws` module.                                      |
+| `disabled`       | `false`                                           | Disables this module.                                           |
 
 ### Variables
 
@@ -333,7 +333,7 @@ The module is only visible when the device's battery is below 10%.
 | `empty_symbol`       | `" "`                            | The symbol shown when the battery state is empty.   |
 | `format`             | `"[$symbol$percentage]($style) "` | The format for the module.                          |
 | `display`            | [link](#battery-display)          | Display threshold and style for the module.         |
-| `disabled`           | `false`                           | Disables the `battery` module.                      |
+| `disabled`           | `false`                           | Disables this module.                               |
 
 ### Example
 
@@ -363,11 +363,11 @@ The default value for the `charging_symbol` and `discharging_symbol` option is r
 
 The `display` option is an array of the following table.
 
-| Option               | Default    | Description                                     |
-| -------------------- | ---------- | ----------------------------------------------- |
-| `threshold`          | `10`       | The upper bound for the display option.         |
-| `style`              | `bold red` | The style used if the display option is in use. |
-| `charging_symbol`    | `-`        | Optional symbol displayed if display option is in use, defaults to battery's `charging_symbol` option. |
+| Option               | Default    | Description                                                                                               |
+| -------------------- | ---------- | --------------------------------------------------------------------------------------------------------- |
+| `threshold`          | `10`       | The upper bound for the display option.                                                                   |
+| `style`              | `bold red` | The style used if the display option is in use.                                                           |
+| `charging_symbol`    | `-`        | Optional symbol displayed if display option is in use, defaults to battery's `charging_symbol` option.    |
 | `discharging_symbol` | `-`        | Optional symbol displayed if display option is in use, defaults to battery's `discharging_symbol` option. |
 
 #### Example
@@ -412,7 +412,7 @@ look at [this example](#with-custom-error-shape).
 | `success_symbol` | `"[❯](bold green)"` | The format string used before the text input if the previous command succeeded.  |
 | `error_symbol`   | `"[❯](bold red)"`   | The format string used before the text input if the previous command failed.     |
 | `vicmd_symbol`   | `"[❮](bold green)"` | The format string used before the text input if the shell is in vim normal mode. |
-| `disabled`       | `false`             | Disables the `character` module.                                                 |
+| `disabled`       | `false`             | Disables this module.                                                            |
 
 ### Variables
 
@@ -469,7 +469,7 @@ the module will be activated if any of the following conditions are met:
 | `detect_files`      | `["CMakeLists.txt", "CMakeCache.txt"]` | Which filenames should trigger this module   |
 | `detect_folders`    | `[]`                                   | Which folders should trigger this module     |
 | `style`             | `"bold blue"`                          | The style for the module.                    |
-| `disabled`          | `false`                                | Disables the `cmake` module.                 |
+| `disabled`          | `false`                                | Disables this module.                        |
 
 ### Variables
 
@@ -501,15 +501,15 @@ running `eval $(starship init $0)`, and then proceed as normal.
 
 ### Options
 
-| Option              | Default                       | Description                                                |
-| ------------------- | ----------------------------- | ---------------------------------------------------------- |
-| `min_time`          | `2_000`                       | Shortest duration to show time for (in milliseconds).      |
-| `show_milliseconds` | `false`                       | Show milliseconds in addition to seconds for the duration. |
-| `format`            | `"took [$duration]($style) "` | The format for the module.                                 |
-| `style`             | `"bold yellow"`               | The style for the module.                                  |
-| `disabled`          | `false`                       | Disables the `cmd_duration` module.                        |
-| `show_notifications`| `false`                       | Show desktop notifications when command completes.         |
-| `min_time_to_notify`| `45_000`                      | Shortest duration for notification (in milliseconds).      |
+| Option               | Default                       | Description                                                |
+| -------------------  | ----------------------------- | ---------------------------------------------------------- |
+| `min_time`           | `2_000`                       | Shortest duration to show time for (in milliseconds).      |
+| `show_milliseconds`  | `false`                       | Show milliseconds in addition to seconds for the duration. |
+| `format`             | `"took [$duration]($style) "` | The format for the module.                                 |
+| `style`              | `"bold yellow"`               | The style for the module.                                  |
+| `disabled`           | `false`                       | Disables this module.                                      |
+| `show_notifications` | `false`                       | Show desktop notifications when command completes.         |
+| `min_time_to_notify` | `45_000`                      | Shortest duration for notification (in milliseconds).      |
 
 ::: tip
 
@@ -556,7 +556,7 @@ This does not suppress conda's own prompt modifier, you may want to run `conda c
 | `style`             | `"bold green"`                         | The style for the module.                                                                                                                                                                                   |
 | `format`            | `"via [$symbol$environment]($style) "` | The format for the module.                                                                                                                                                                                  |
 | `ignore_base`       | `true`                                 | Ignores `base` environment when activated.                                                                                                                                                                  |
-| `disabled`          | `false`                                | Disables the `conda` module.                                                                                                                                                                                |
+| `disabled`          | `false`                                | Disables this module.                                                                                                                                                                                       |
 
 ### Variables
 
@@ -595,7 +595,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_files`      | `["shard.yml"]`                      | Which filenames should trigger this module.               |
 | `detect_folders`    | `[]`                                 | Which folders should trigger this module.                 |
 | `format`            | `"via [$symbol($version )]($style)"` | The format for the module.                                |
-| `disabled`          | `false`                              | Disables the `crystal` module.                            |
+| `disabled`          | `false`                              | Disables this module.                                     |
 
 ### Variables
 
@@ -635,7 +635,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_files`      | `["pubspec.yaml", "pubspec.yml", "pubspec.lock"]` | Which filenames should trigger this module.     |
 | `detect_folders`    | `[".dart_tool"]`                                  | Which folders should trigger this module.       |
 | `style`             | `"bold blue"`                                     | The style for the module.                       |
-| `disabled`          | `false`                                           | Disables the `dart` module.                     |
+| `disabled`          | `false`                                           | Disables this module.                           |
 
 ### Variables
 
@@ -672,7 +672,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_files`      | `["mod.ts", "mod.js", "deps.ts", "deps.js"]`      | Which filenames should trigger this module.     |
 | `detect_folders`    | `[]`                                              | Which folders should trigger this module.       |
 | `style`             | `"green bold"`                                    | The style for the module.                       |
-| `disabled`          | `false`                                           | Disables the `deno` module.                     |
+| `disabled`          | `false`                                           | Disables this module.                           |
 
 ### Variables
 
@@ -713,7 +713,7 @@ it would have been `nixpkgs/pkgs`.
 | `truncate_to_repo`  | `true`                                             | Whether or not to truncate to the root of the git repo that you're currently in. |
 | `format`            | `"[$path]($style)[$read_only]($read_only_style) "` | The format for the module.                                                       |
 | `style`             | `"bold cyan"`                                      | The style for the module.                                                        |
-| `disabled`          | `false`                                            | Disables the `directory` module.                                                 |
+| `disabled`          | `false`                                            | Disables this module.                                                            |
 | `read_only`         | `"🔒"`                                             | The symbol indicating current directory is read only.                            |
 | `read_only_style`   | `"red"`                                            | The style for the read only symbol.                                              |
 | `truncation_symbol` | `""`                                               | The symbol to prefix to truncated paths. eg: "…/"                                |
@@ -781,7 +781,7 @@ The `docker_context` module shows the currently active
 | `detect_files`      | `["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]` | Which filenames should trigger this module (needs `only_with_files` to be true).  |
 | `detect_folders`    | `[]`                                                          | Which folders should trigger this module (needs `only_with_files` to be true).    |
 | `style`             | `"blue bold"`                                                 | The style for the module.                                                         |
-| `disabled`          | `false`                                                       | Disables the `docker_context` module.                                             |
+| `disabled`          | `false`                                                       | Disables this module.                                                             |
 
 ### Variables
 
@@ -843,7 +843,7 @@ when there is a csproj file in the current directory.
 | `detect_files`      | `["global.json", "project.json", "Directory.Build.props", "Directory.Build.targets", "Packages.props"]` | Which filenames should trigger this module.              |
 | `detect_folders`    | `[]`                                                                                                    | Which folders should trigger this modules.               |
 | `style`             | `"bold blue"`                                                                                           | The style for the module.                                |
-| `disabled`          | `false`                                                                                                 | Disables the `dotnet` module.                            |
+| `disabled`          | `false`                                                                                                 | Disables this module.                                    |
 
 ### Variables
 
@@ -883,8 +883,8 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_files`      | `["mix.exs"]`                                             | Which filenames should trigger this module.                     |
 | `detect_folders`    | `[]`                                                      | Which folders should trigger this modules.                      |
 | `style`             | `"bold purple"`                                           | The style for the module.                                       |
-| `format`            | `'via [$symbol($version \(OTP $otp_version\) )]($style)'` | The format for the module elixir.                               |
-| `disabled`          | `false`                                                   | Disables the `elixir` module.                                   |
+| `format`            | `'via [$symbol($version \(OTP $otp_version\) )]($style)'` | The format for the module.                                      |
+| `disabled`          | `false`                                                   | Disables this module.                                           |
 
 ### Variables
 
@@ -927,7 +927,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_files`      | `["elm.json", "elm-package.json", ".elm-version"]` | Which filenames should trigger this module.     |
 | `detect_folders`    | `["elm-stuff"]`                                    | Which folders should trigger this modules.      |
 | `style`             | `"cyan bold"`                                      | The style for the module.                       |
-| `disabled`          | `false`                                            | Disables the `elm` module.                      |
+| `disabled`          | `false`                                            | Disables this module.                           |
 
 ### Variables
 
@@ -964,7 +964,7 @@ The module will be shown only if any of the following conditions are met:
 | `variable` |                                | The environment variable to be displayed.                                    |
 | `default`  |                                | The default value to be displayed when the selected variable is not defined. |
 | `format`   | `"with [$env_value]($style) "` | The format for the module.                                                   |
-| `disabled` | `false`                        | Disables the `env_var` module.                                               |
+| `disabled` | `false`                        | Disables this module.                                                        |
 
 ### Variables
 
@@ -1004,7 +1004,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_files`      | `["rebar.config", "elang.mk"]`       | Which filenames should trigger this module.              |
 | `detect_folders`    | `[]`                                 | Which folders should trigger this modules.               |
 | `format`            | `"via [$symbol($version )]($style)"` | The format for the module.                               |
-| `disabled`          | `false`                              | Disables the `erlang` module.                            |
+| `disabled`          | `false`                              | Disables this module.                                    |
 
 ### Variables
 
@@ -1038,7 +1038,7 @@ This is based on the `~/.config/gcloud/active_config` file and the `~/.config/gc
 | `symbol`         | `"☁️ "`                                         | The symbol used before displaying the current GCP profile.      |
 | `region_aliases` |                                                | Table of region aliases to display in addition to the GCP name. |
 | `style`          | `"bold blue"`                                  | The style for the module.                                       |
-| `disabled`       | `false`                                        | Disables the `gcloud` module.                                   |
+| `disabled`       | `false`                                        | Disables this module.                                           |
 
 ### Variables
 
@@ -1095,13 +1095,13 @@ The `git_branch` module shows the active branch of the repo in your current dire
 | Option               | Default                          | Description                                                                              |
 | -------------------- | -------------------------------- | ---------------------------------------------------------------------------------------- |
 | `always_show_remote` | `false`                          | Shows the remote tracking branch name, even if it is equal to the local branch name.     |
-| `format`             | `"on [$symbol$branch]($style) "` | The format for the module. Use `"$branch"` to refer to the current branch name.          |
+| `format`             | `"on [$symbol$branch]($style) "` | The format for the module.                                                               |
 | `symbol`             | `" "`                           | A format string representing the symbol of git branch.                                   |
 | `style`              | `"bold purple"`                  | The style for the module.                                                                |
 | `truncation_length`  | `2^63 - 1`                       | Truncates a git branch to `N` graphemes.                                                 |
 | `truncation_symbol`  | `"…"`                            | The symbol used to indicate a branch name was truncated. You can use `""` for no symbol. |
 | `only_attached`      | `false`                          | Only show the branch name when not in a detached `HEAD` state.                           |
-| `disabled`           | `false`                          | Disables the `git_branch` module.                                                        |
+| `disabled`           | `false`                          | Disables this module.                                                                    |
 
 ### Variables
 
@@ -1140,7 +1140,7 @@ The `git_commit` module shows the current commit hash and also the tag (if any) 
 | `only_detached`      | `true`                                         | Only show git commit hash when in detached `HEAD` state |
 | `tag_disabled`       | `true`                                         | Disables showing tag info in `git_commit` module.       |
 | `tag_symbol`         | `"🏷 "`                                        | Tag symbol prefixing the info shown                     |
-| `disabled`           | `false`                                        | Disables the `git_commit` module.                       |
+| `disabled`           | `false`                                        | Disables this module.                                   |
 
 ### Variables
 
@@ -1181,7 +1181,7 @@ that information will be shown too.
 | `am_or_rebase` | `"AM/REBASE"`                                                 | A format string displayed when an ambiguous `apply-mailbox` or `rebase` is in progress. |
 | `style`        | `"bold yellow"`                                               | The style for the module.                                                               |
 | `format`       | `'\([$state( $progress_current/$progress_total)]($style)\) '` | The format for the module.                                                              |
-| `disabled`     | `false`                                                       | Disables the `git_state` module.                                                        |
+| `disabled`     | `false`                                                       | Disables this module.                                                                   |
 
 ### Variables
 
@@ -1213,7 +1213,7 @@ current directory.
 
 | Option       | Default                                       | Description                         |
 | ------------ | --------------------------------------------- | ----------------------------------- |
-| `format`     | `'([\[$all_status$ahead_behind\]]($style) )'` | The default format for `git_status` |
+| `format`     | `'([\[$all_status$ahead_behind\]]($style) )'` | The format for the module.          |
 | `conflicted` | `"="`                                         | This branch has merge conflicts.    |
 | `ahead`      | `"⇡"`                                         | The format of `ahead`               |
 | `behind`     | `"⇣"`                                         | The format of `behind`              |
@@ -1225,7 +1225,7 @@ current directory.
 | `renamed`    | `"»"`                                         | The format of `renamed`             |
 | `deleted`    | `"✘"`                                         | The format of `deleted`             |
 | `style`      | `"bold red"`                                  | The style for the module.           |
-| `disabled`   | `false`                                       | Disables the `git_status` module.   |
+| `disabled`   | `false`                                       | Disables this module.               |
 
 ### Variables
 
@@ -1312,7 +1312,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_files`       | `["go.mod", "go.sum", "glide.yaml", "Gopkg.yml", "Gopkg.lock", ".go-version"]` | Which filenames should trigger this module.    |
 | `detect_folders`     | `["Godeps"]`                                                                   | Which folders should trigger this module.      |
 | `style`              | `"bold cyan"`                                                                  | The style for the module.                      |
-| `disabled`           | `false`                                                                        | Disables the `golang` module.                  |
+| `disabled`           | `false`                                                                        | Disables this module.                          |
 
 ### Variables
 
@@ -1351,7 +1351,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_folders`    | `[]`                                 | Which folders should trigger this modules.       |
 | `symbol`            | `"⎈ "`                               | A format string representing the symbol of Helm. |
 | `style`             | `"bold white"`                       | The style for the module.                        |
-| `disabled`          | `false`                              | Disables the `helm` module.                      |
+| `disabled`          | `false`                              | Disables this module.                            |
 
 ### Variables
 
@@ -1384,7 +1384,7 @@ The `hostname` module shows the system hostname.
 | `trim_at`  | `"."`                       | String that the hostname is cut off at, after the first match. `"."` will stop after the first dot. `""` will disable any truncation |
 | `format`   | `"[$hostname]($style) in "` | The format for the module.                                                                                                           |
 | `style`    | `"bold dimmed green"`       | The style for the module.                                                                                                            |
-| `disabled` | `false`                     | Disables the `hostname` module.                                                                                                      |
+| `disabled` | `false`                     | Disables this module.                                                                                                                |
 
 ### Variables
 
@@ -1426,7 +1426,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_folders`    | `[]`                                                                                                      | Which folders should trigger this modules.                                |
 | `symbol`            | `"☕ "`                                                                                                   | A format string representing the symbol of Java                           |
 | `style`             | `"red dimmed"`                                                                                            | The style for the module.                                                 |
-| `disabled`          | `false`                                                                                                   | Disables the `java` module.                                               |
+| `disabled`          | `false`                                                                                                   | Disables this module.                                                     |
 
 ### Variables
 
@@ -1468,7 +1468,7 @@ This module is not supported on tcsh.
 | `format`    | `"[$symbol$number]($style) "` | The format for the module.                       |
 | `symbol`    | `"✦"`                         | A format string representing the number of jobs. |
 | `style`     | `"bold blue"`                 | The style for the module.                        |
-| `disabled`  | `false`                       | Disables the `jobs` module.                      |
+| `disabled`  | `false`                       | Disables this module.                            |
 
 ### Variables
 
@@ -1509,7 +1509,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_folders`    | `[]`                                 | Which folders should trigger this modules.        |
 | `symbol`            | `"ஃ "`                               | A format string representing the symbol of Julia. |
 | `style`             | `"bold purple"`                      | The style for the module.                         |
-| `disabled`          | `false`                              | Disables the `julia` module.                      |
+| `disabled`          | `false`                              | Disables this module.                             |
 
 ### Variables
 
@@ -1545,10 +1545,10 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_extensions` | `["kt", "kts"]`                      | Which extensions should trigger this module.                                  |
 | `detect_files`      | `[]`                                 | Which filenames should trigger this module.                                   |
 | `detect_folders`    | `[]`                                 | Which folders should trigger this modules.                                    |
-| `symbol`            | `"🅺 "`                               | A format string representing the symbol of Kotlin.                            |
+| `symbol`            | `"🅺 "`                              | A format string representing the symbol of Kotlin.                            |
 | `style`             | `"bold blue"`                        | The style for the module.                                                     |
 | `kotlin_binary`     | `"kotlin"`                           | Configures the kotlin binary that Starship executes when getting the version. |
-| `disabled`          | `false`                              | Disables the `kotlin` module.                                                 |
+| `disabled`          | `false`                              | Disables this module.                                                         |
 
 ### Variables
 
@@ -1599,7 +1599,7 @@ To enable it, set `disabled` to `false` in your configuration file.
 | `format`                | `'[$symbol$context( \($namespace\))]($style) in '` | The format for the module.                                            |
 | `style`                 | `"cyan bold"`                                      | The style for the module.                                             |
 | `context_aliases`       |                                                    | Table of context aliases to display.                                  |
-| `disabled`              | `true`                                             | Disables the `kubernetes` module.                                     |
+| `disabled`              | `true`                                             | Disables this module.                                                 |
 
 ### Variables
 
@@ -1663,7 +1663,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_folders`    | `["lua"]`                            | Which folders should trigger this module.                                     |
 | `style`             | `"bold blue"`                        | The style for the module.                                                     |
 | `lua_binary`        | `"lua"`                              | Configures the lua binary that Starship executes when getting the version.    |
-| `disabled`          | `false`                              | Disables the `lua` module.                                                    |
+| `disabled`          | `false`                              | Disables this module.                                                         |
 
 ### Variables
 
@@ -1705,7 +1705,7 @@ To enable it, set `disabled` to `false` in your configuration file.
 | `format`    | `"via $symbol [${ram}( \| ${swap})]($style) "` | The format for the module.                               |
 | `symbol`    | `"🐏"`                                         | The symbol used before displaying the memory usage.      |
 | `style`     | `"bold dimmed white"`                          | The style for the module.                                |
-| `disabled`  | `true`                                         | Disables the `memory_usage` module.                      |
+| `disabled`  | `true`                                         | Disables this module.                                    |
 
 ### Variables
 
@@ -1746,7 +1746,7 @@ The `hg_branch` module shows the active branch of the repo in your current direc
 | `format`            | `"on [$symbol$branch]($style) "` | The format for the module.                                                                   |
 | `truncation_length` | `2^63 - 1`                       | Truncates the hg branch name to `N` graphemes                                                |
 | `truncation_symbol` | `"…"`                            | The symbol used to indicate a branch name was truncated.                                     |
-| `disabled`          | `true`                           | Disables the `hg_branch` module.                                                             |
+| `disabled`          | `true`                           | Disables this module.                                                                        |
 
 ### Variables
 
@@ -1783,13 +1783,13 @@ By default the module will be shown if any of the following conditions are met:
 
 | Option               | Default                              | Description                                           |
 | -------------------- | ------------------------------------ | ----------------------------------------------------- |
-| `format`             | `"via [$symbol($version )]($style)"` | The format for the module                             |
+| `format`             | `"via [$symbol($version )]($style)"` | The format for the module.                            |
 | `symbol`             | `"👑 "`                              | The symbol used before displaying the version of Nim. |
 | `detect_extensions`  | `["nim", "nims", "nimble"]`          | Which extensions should trigger this module.          |
 | `detect_files`       | `["nim.cfg"]`                        | Which filenames should trigger this module.           |
 | `detect_folders`     | `[]`                                 | Which folders should trigger this module.             |
 | `style`              | `"bold yellow"`                      | The style for the module.                             |
-| `disabled`           | `false`                              | Disables the `nim` module.                            |
+| `disabled`           | `false`                              | Disables this module.                                 |
 
 ### Variables
 
@@ -1825,7 +1825,7 @@ The module will be shown when inside a nix-shell environment.
 | `style`      | `"bold blue"`                                | The style for the module.                             |
 | `impure_msg` | `"impure"`                                   | A format string shown when the shell is impure.       |
 | `pure_msg`   | `"pure"`                                     | A format string shown when the shell is pure.         |
-| `disabled`   | `false`                                      | Disables the `nix_shell` module.                      |
+| `disabled`   | `false`                                      | Disables this module.                                 |
 
 ### Variables
 
@@ -1872,7 +1872,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_files`      | `["package.json", ".node-version"]`  | Which filenames should trigger this module.                                                          |
 | `detect_folders`    | `["node_modules"]`                   | Which folders should trigger this module.                                                            |
 | `style`             | `"bold green"`                       | The style for the module.                                                                            |
-| `disabled`          | `false`                              | Disables the `nodejs` module.                                                                        |
+| `disabled`          | `false`                              | Disables this module.                                                                                |
 | `not_capable_style` | `bold red`                           | The style for the module when an engines property in package.json does not match the NodeJS version. |
 
 ### Variables
@@ -1910,7 +1910,7 @@ By default the module will be shown if any of the following conditions are met:
 
 | Option                    | Default                                                                  | Description                                             |
 | ------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------- |
-| `format`                  | `"via [$symbol($version )(\($switch_indicator$switch_name\) )]($style)"` | The format string for the module.                       |
+| `format`                  | `"via [$symbol($version )(\($switch_indicator$switch_name\) )]($style)"` | The format for the module.                              |
 | `symbol`                  | `"🐫 "`                                                                  | The symbol used before displaying the version of OCaml. |
 | `global_switch_indicator` | `""`                                                                     | The format string used to represent global OPAM switch. |
 | `local_switch_indicator`  | `"*"`                                                                    | The format string used to represent local OPAM switch.  |
@@ -1918,7 +1918,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_files`            | `["dune", "dune-project", "jbuild", "jbuild-ignore", ".merlin"]`         | Which filenames should trigger this module.             |
 | `detect_folders`          | `["_opam", "esy.lock"]`                                                  | Which folders should trigger this module.               |
 | `style`                   | `"bold yellow"`                                                          | The style for the module.                               |
-| `disabled`                | `false`                                                                  | Disables the `ocaml` module.                            |
+| `disabled`                | `false`                                                                  | Disables this module.                                   |
 
 ### Variables
 
@@ -1955,7 +1955,7 @@ to fetch the current project in use.
 | `format`         | `"on [$symbol$cloud(\\($project\\))]($style) "`  | The format for the module.                                      |
 | `symbol`         | `"☁️ "`                                           | The symbol used before displaying the current OpenStack cloud.  |
 | `style`          | `"bold yellow"`                                  | The style for the module.                                       |
-| `disabled`       | `false`                                          | Disables the `openstack` module.                                |
+| `disabled`       | `false`                                          | Disables this module.                                           |
 
 ### Variables
 
@@ -2011,7 +2011,7 @@ package, and shows its current version. The module currently supports `npm`, `ca
 | `symbol`          | `"📦 "`                            | The symbol used before displaying the version the package. |
 | `style`           | `"bold 208"`                       | The style for the module.                                  |
 | `display_private` | `false`                            | Enable displaying version for packages marked as private.  |
-| `disabled`        | `false`                            | Disables the `package` module.                             |
+| `disabled`        | `false`                            | Disables this module.                                      |
 
 ### Variables
 
@@ -2047,13 +2047,13 @@ By default the module will be shown if any of the following conditions are met:
 
 | Option               | Default                                                                                                  | Description                                           |
 | -------------------- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| `format`             | `"via [$symbol($version )]($style)"`                                                                     | The format string for the module.                     |
+| `format`             | `"via [$symbol($version )]($style)"`                                                                     | The format for the module.                            |
 | `symbol`             | `"🐪 "`                                                                                                  | The symbol used before displaying the version of Perl |
 | `detect_extensions`  | `["pl", "pm", "pod"]`                                                                                    | Which extensions should trigger this module.          |
 | `detect_files`       | `["Makefile.PL", "Build.PL", "cpanfile", "cpanfile.snapshot", "META.json", "META.yml", ".perl-version"]` | Which filenames should trigger this module.           |
 | `detect_folders`     | `[]`                                                                                                     | Which folders should trigger this module.             |
 | `style`              | `"bold 149"`                                                                                             | The style for the module.                             |
-| `disabled`           | `false`                                                                                                  | Disables the `perl` module.                           |
+| `disabled`           | `false`                                                                                                  | Disables this module.                                 |
 
 ### Variables
 
@@ -2091,7 +2091,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_files`       | `["composer.json", ".php-version"]`  | Which filenames should trigger this module.           |
 | `detect_folders`     | `[]`                                 | Which folders should trigger this module.             |
 | `style`              | `"147 bold"`                         | The style for the module.                             |
-| `disabled`           | `false`                              | Disables the `php` module.                            |
+| `disabled`           | `false`                              | Disables this module.                                 |
 
 ### Variables
 
@@ -2130,7 +2130,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_files`       | `["spago.dhall"]`                    | Which filenames should trigger this module.                  |
 | `detect_folders`     | `[]`                                 | Which folders should trigger this module.                    |
 | `style`              | `"bold white"`                       | The style for the module.                                    |
-| `disabled`           | `false`                              | Disables the `purescript` module.                            |
+| `disabled`           | `false`                              | Disables this module.                                        |
 
 ### Variables
 
@@ -2185,7 +2185,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_extensions`  | `[".py"]`                                                                                                    | Which extensions should trigger this module                                            |
 | `detect_files`       | `[".python-version", "Pipfile", "__init__.py", "pyproject.toml", "requirements.txt", "setup.py", "tox.ini"]` | Which filenames should trigger this module                                             |
 | `detect_folders`     | `[]`                                                                                                         | Which folders should trigger this module                                               |
-| `disabled`           | `false`                                                                                                      | Disables the `python` module.                                                          |
+| `disabled`           | `false`                                                                                                      | Disables this module.                                                                  |
 
 ::: tip
 
@@ -2261,7 +2261,7 @@ The module will be shown if any of the following conditions are met:
 | `detect_files`      | `["Gemfile", ".ruby-version"]`       | Which filenames should trigger this module.                               |
 | `detect_folders`    | `[]`                                 | Which folders should trigger this module.                                 |
 | `style`             | `"bold red"`                         | The style for the module.                                                 |
-| `disabled`          | `false`                              | Disables the `ruby` module.                                               |
+| `disabled`          | `false`                              | Disables this module.                                                     |
 
 ### Variables
 
@@ -2301,7 +2301,7 @@ The module will be shown if any of the following conditions are met:
 | `detect_files`      | `["Cargo.toml"]`                     | Which filenames should trigger this module.                               |
 | `detect_folders`    | `[]`                                 | Which folders should trigger this module.                                 |
 | `style`             | `"bold red"`                         | The style for the module.                                                 |
-| `disabled`          | `false`                              | Disables the `rust` module.                                               |
+| `disabled`          | `false`                              | Disables this module.                                                     |
 
 ### Variables
 
@@ -2339,9 +2339,9 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_extensions` | `["sbt", "scala"]`                          | Which extensions should trigger this module.      |
 | `detect_files`      | `[".scalaenv", ".sbtenv", "build.sbt"]`     | Which filenames should trigger this module.       |
 | `detect_folders`    | `[".metals"]`                               | Which folders should trigger this modules.        |
-| `symbol`            | `"🆂 "`                                      | A format string representing the symbol of Scala. |
+| `symbol`            | `"🆂 "`                                     | A format string representing the symbol of Scala. |
 | `style`             | `"red dimmed"`                              | The style for the module.                         |
-| `disabled`          | `false`                                     | Disables the `scala` module.                      |
+| `disabled`          | `false`                                     | Disables this module.                             |
 
 ### Variables
 
@@ -2385,7 +2385,7 @@ To enable it, set `disabled` to `false` in your configuration file.
 | `elvish_indicator`     | `esh`         | A format string used to represent elvish.     |
 | `tcsh_indicator`       | `tsh`         | A format string used to represent tcsh.       |
 | `format`               | `$indicator ` | The format for the module.                    |
-| `disabled`             | `true`        | Disables the `shell` module.                  |
+| `disabled`             | `true`        | Disables this module.                         |
 
 ### Variables
 
@@ -2418,7 +2418,7 @@ set to a number and meets or exceeds the specified threshold.
 | `symbol`    | `"↕️ "`                       | The symbol used to represent the `SHLVL`.                     |
 | `repeat`    | `false`                      | Causes `symbol` to be repeated by the current `SHLVL` amount. |
 | `style`     | `"bold yellow"`              | The style for the module.                                     |
-| `disabled`  | `true`                       | Disables the `shlvl` module.                                  |
+| `disabled`  | `true`                       | Disables this module.                                         |
 
 ### Variables
 
@@ -2453,7 +2453,7 @@ and `$SINGULARITY_NAME` is set.
 | `format`   | `'[$symbol\[$env\]]($style) '` | The format for the module.                       |
 | `symbol`   | `""`                           | A format string displayed before the image name. |
 | `style`    | `"bold dimmed blue"`           | The style for the module.                        |
-| `disabled` | `false`                        | Disables the `singularity` module.               |
+| `disabled` | `false`                        | Disables this module.                            |
 
 ### Variables
 
@@ -2494,7 +2494,7 @@ This module is not supported on elvish shell.
 
 | Option                    | Default                       | Description                                            |
 | ------------------------- | ----------------------------- | ------------------------------------------------------ |
-| `format`                  | `"[$symbol$status]($style) "` | The format of the module                               |
+| `format`                  | `"[$symbol$status]($style) "` | The format for the module.                             |
 | `symbol`                  | `"✖"`                         | The symbol displayed on program error                  |
 | `not_executable_symbol`   | `"🚫"`                        | The symbol displayed when file isn't executable        |
 | `not_found_symbol`        | `"🔍"`                        | The symbol displayed when the command can't be found   |
@@ -2503,7 +2503,7 @@ This module is not supported on elvish shell.
 | `style`                   | `"bold red"`                  | The style for the module.                              |
 | `recognize_signal_code`   | `true`                        | Enable signal mapping from exit code                   |
 | `map_symbol`              | `false`                       | Enable symbols mapping from exit code                  |
-| `disabled`                | `true`                        | Disables the `status` module.                          |
+| `disabled`                | `true`                        | Disables this module.                                  |
 
 ### Variables
 
@@ -2553,7 +2553,7 @@ The module will be shown if any of the following conditions are met:
 | `detect_files`      | `["Package.swift"]`                  | Which filenames should trigger this module.      |
 | `detect_folders`    | `[]`                                 | Which folders should trigger this module.        |
 | `style`             | `"bold 202"`                         | The style for the module.                        |
-| `disabled`          | `false`                              | Disables the `swift` module.                     |
+| `disabled`          | `false`                              | Disables this module.                            |
 
 ### Variables
 
@@ -2594,13 +2594,13 @@ By default the module will be shown if any of the following conditions are met:
 
 | Option              | Default                              | Description                                           |
 | ------------------- | ------------------------------------ | ----------------------------------------------------- |
-| `format`            | `"via [$symbol$workspace]($style) "` | The format string for the module.                     |
+| `format`            | `"via [$symbol$workspace]($style) "` | The format for the module.                            |
 | `symbol`            | `"💠"`                               | A format string shown before the terraform workspace. |
 | `detect_extensions` | `["tf", "hcl"]`                      | Which extensions should trigger this module.          |
 | `detect_files`      | `[]`                                 | Which filenames should trigger this module.           |
 | `detect_folders`    | `[".terraform"]`                     | Which folders should trigger this module.             |
 | `style`             | `"bold 105"`                         | The style for the module.                             |
-| `disabled`          | `false`                              | Disables the `terraform` module.                      |
+| `disabled`          | `false`                              | Disables this module.                                 |
 
 ### Variables
 
@@ -2649,12 +2649,12 @@ To enable it, set `disabled` to `false` in your configuration file.
 
 | Option            | Default                 | Description                                                                                                            |
 | ----------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `format`          | `"at [$time]($style) "` | The format string for the module.                                                                                      |
+| `format`          | `"at [$time]($style) "` | The format for the module.                                                                                             |
 | `use_12hr`        | `false`                 | Enables 12 hour formatting                                                                                             |
 | `time_format`     | see below               | The [chrono format string](https://docs.rs/chrono/0.4.7/chrono/format/strftime/index.html) used to format the time.    |
 | `style`           | `"bold yellow"`         | The style for the module time                                                                                          |
 | `utc_time_offset` | `"local"`               | Sets the UTC offset to use. Range from -24 &lt; x &lt; 24. Allows floats to accommodate 30/45 minute timezone offsets. |
-| `disabled`        | `true`                  | Disables the `time` module.                                                                                            |
+| `disabled`        | `true`                  | Disables this module.                                                                                                  |
 | `time_range`      | `"-"`                   | Sets the time range during which the module will be shown. Times must be specified in 24-hours format                  |
 
 If `use_12hr` is `true`, then `time_format` defaults to `"%r"`. Otherwise, it defaults to `"%T"`.
@@ -2708,7 +2708,7 @@ these variables, one workaround is to set one of them with a dummy value.
 | `style_user`  | `"bold yellow"`         | The style used for non-root users.    |
 | `format`      | `"[$user]($style) in "` | The format for the module.            |
 | `show_always` | `false`                 | Always shows the `username` module.   |
-| `disabled`    | `false`                 | Disables the `username` module.       |
+| `disabled`    | `false`                 | Disables this module.                 |
 
 ### Variables
 
@@ -2747,7 +2747,7 @@ By default the module will be shown if any of the following conditions are met:
 | `detect_files`      | `["Vagrantfile"]`                    | Which filenames should trigger this module.         |
 | `detect_folders`    | `[]`                                 | Which folders should trigger this module.           |
 | `style`             | `"cyan bold"`                        | The style for the module.                           |
-| `disabled`          | `false`                              | Disables the `vagrant` module.                      |
+| `disabled`          | `false`                              | Disables this module.                               |
 
 ### Variables
 
@@ -2775,12 +2775,12 @@ The module will be shown only if a repository is currently in use.
 
 ### Options
 
-| Option     | Default                          | Description                                             |
-| ---------- | -------------------------------- | ------------------------------------------------------- |
-| `symbol`   |                                  | The symbol used before displaying the repository name.  |
-| `style`    | `"bold yellow"`                  | The style for the module.                               |
-| `format`   | `"vcsh [$symbol$repo]($style) "` | The format for the module.                              |
-| `disabled` | `false`                          | Disables the `vcsh` module.                             |
+| Option     | Default                          | Description                                            |
+| ---------- | -------------------------------- | ------------------------------------------------------ |
+| `symbol`   |                                  | The symbol used before displaying the repository name. |
+| `style`    | `"bold yellow"`                  | The style for the module.                              |
+| `format`   | `"vcsh [$symbol$repo]($style) "` | The format for the module.                             |
+| `disabled` | `false`                          | Disables this module.                                  |
 
 ### Variables
 
@@ -2815,7 +2815,7 @@ The module will be shown if any of the following conditions are met:
 | `symbol`            | `"↯ "`                               | The symbol used before displaying the version of Zig. |
 | `style`             | `"bold yellow"`                      | The style for the module.                             |
 | `format`            | `"via [$symbol($version )]($style)"` | The format for the module.                            |
-| `disabled`          | `false`                              | Disables the `zig` module.                            |
+| `disabled`          | `false`                              | Disables this module.                                 |
 | `detect_extensions` | `["zig"]`                            | Which extensions should trigger this module.          |
 | `detect_files`      | `[]`                                 | Which filenames should trigger this module.           |
 | `detect_folders`    | `[]`                                 | Which folders should trigger this module.             |
