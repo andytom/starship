@@ -1,7 +1,6 @@
 use unicode_segmentation::UnicodeSegmentation;
 
 use super::{Context, Module, RootModuleConfig};
-use git2::Repository;
 
 use crate::configs::git_branch::GitBranchConfig;
 use crate::formatter::StringFormatter;
@@ -25,29 +24,49 @@ pub fn module<'a>(context: &'a Context) -> Option<Module<'a>> {
         config.truncation_length as usize
     };
 
-    let repo = context.get_repo().ok()?;
+    let branch_name_raw = context
+        .exec_cmd(
+            "git",
+            &[
+                "-C",
+                &context.current_dir.to_string_lossy(),
+                "symbolic-ref",
+                "--short",
+                "HEAD",
+            ],
+        )?
+        .stdout;
 
-    if let Some(repo_root) = repo.root.as_ref() {
-        let git_repo = Repository::open(repo_root).ok()?;
-        let is_detached = git_repo.head_detached().ok()?;
-        if config.only_attached && is_detached {
-            return None;
-        }
+    let branch_name = branch_name_raw.trim();
+
+    if config.only_attached && branch_name == "HEAD" {
+        return None;
     }
 
-    let branch_name = repo.branch.as_ref()?;
     let mut graphemes: Vec<&str> = branch_name.graphemes(true).collect();
+
+    // TODO - Get remote branch names working
+    // let remote = context.exec_cmd(
+    //     "git",
+    //     &["rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}"],
+    // );
 
     let mut remote_branch_graphemes: Vec<&str> = Vec::new();
     let mut remote_name_graphemes: Vec<&str> = Vec::new();
-    if let Some(remote) = repo.remote.as_ref() {
-        if let Some(branch) = &remote.branch {
-            remote_branch_graphemes = branch.graphemes(true).collect()
-        };
-        if let Some(name) = &remote.name {
-            remote_name_graphemes = name.graphemes(true).collect()
-        };
-    }
+
+    // if remote.is_some() {
+    //     let mut parsed = remote
+    //         .unwrap()
+    //         .stdout
+    //         .splitn(2, "/")
+    //         .map(|s| s.graphemes(true).collect());
+
+    //     //remote_name.map_or(Vec::new(), |s| s.graphemes(true).collect());
+    //     remote_name_graphemes = parsed.next().unwrap_or(Vec::new());
+
+    //     //remote_branch.map_or(Vec::new(), |s| s.graphemes(true).collect());
+    //     remote_branch_graphemes = parsed.next().unwrap_or(Vec::new());
+    // };
 
     // Truncate fields if need be
     for e in [
