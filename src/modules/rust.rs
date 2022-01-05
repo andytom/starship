@@ -1,6 +1,5 @@
 use std::fs;
 use std::path::Path;
-use std::process::Output;
 
 use serde::Deserialize;
 
@@ -8,7 +7,6 @@ use super::{Context, Module, RootModuleConfig};
 
 use crate::configs::rust::RustConfig;
 use crate::formatter::{StringFormatter, VersionFormatter};
-use crate::utils::create_command;
 
 /// Creates a module with the current Rust version
 pub fn module<'a>(context: &'a Context) -> Option<Module<'a>> {
@@ -84,12 +82,6 @@ fn get_module_version(context: &Context, config: &RustConfig) -> Option<String> 
                 format_rustc_version(&rustc_version, config.version_format)
             }
             RustupRunRustcVersionOutcome::ToolchainName(toolchain) => Some(toolchain),
-            RustupRunRustcVersionOutcome::RustupNotWorking => {
-                // If `rustup` is not in `$PATH` or cannot be executed for other reasons, we can
-                // safely execute `rustc --version`.
-                format_rustc_version(&execute_rustc_version(context)?, config.version_format)
-            }
-            RustupRunRustcVersionOutcome::Err => None,
         }
     } else {
         format_rustc_version(&execute_rustc_version(context)?, config.version_format)
@@ -209,30 +201,12 @@ fn execute_rustup_run_rustc_version(
     context: &Context,
     toolchain: &str,
 ) -> RustupRunRustcVersionOutcome {
-    create_command("rustup")
-        .and_then(|mut cmd| {
-            cmd.args(&["run", toolchain, "rustc", "--version"])
-                .current_dir(&context.current_dir)
-                .output()
-        })
-        .map(extract_toolchain_from_rustup_run_rustc_version)
-        .unwrap_or(RustupRunRustcVersionOutcome::RustupNotWorking)
-}
-
-fn extract_toolchain_from_rustup_run_rustc_version(output: Output) -> RustupRunRustcVersionOutcome {
-    if output.status.success() {
-        if let Ok(output) = String::from_utf8(output.stdout) {
-            return RustupRunRustcVersionOutcome::RustcVersion(output);
-        }
-    } else if let Ok(stderr) = String::from_utf8(output.stderr) {
-        if stderr.starts_with("error: toolchain '") && stderr.ends_with("' is not installed\n") {
-            let stderr = stderr
-                ["error: toolchain '".len()..stderr.len() - "' is not installed\n".len()]
-                .to_owned();
-            return RustupRunRustcVersionOutcome::ToolchainName(stderr);
-        }
-    }
-    RustupRunRustcVersionOutcome::Err
+    context
+        .exec_cmd("rustup", &["run", toolchain, "rustc", "--version"])
+        .map(|output| RustupRunRustcVersionOutcome::RustcVersion(output.stdout))
+        .unwrap_or(RustupRunRustcVersionOutcome::ToolchainName(
+            toolchain.to_owned(),
+        ))
 }
 
 fn execute_rustc_version(context: &Context) -> Option<String> {
@@ -262,8 +236,6 @@ fn format_rustc_version(rustc_version: &str, version_format: &str) -> Option<Str
 enum RustupRunRustcVersionOutcome {
     RustcVersion(String),
     ToolchainName(String),
-    RustupNotWorking,
-    Err,
 }
 
 #[cfg(test)]
