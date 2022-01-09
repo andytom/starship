@@ -163,7 +163,7 @@ impl<'a> Context<'a> {
 
     // Retrives a environment variable from the os or from a table if in testing mode
     #[cfg(test)]
-    pub fn get_env<K: AsRef<str>>(&self, key: K) -> Option<String> {
+    pub fn get_env<K: AsRef<str> + std::fmt::Display>(&self, key: K) -> Option<String> {
         self.env
             .get(key.as_ref())
             .map(std::string::ToString::to_string)
@@ -171,20 +171,24 @@ impl<'a> Context<'a> {
 
     #[cfg(not(test))]
     #[inline]
-    pub fn get_env<K: AsRef<str>>(&self, key: K) -> Option<String> {
-        env::var(key.as_ref()).ok()
+    pub fn get_env<K: AsRef<str> + std::fmt::Display>(&self, key: K) -> Option<String> {
+        let value = env::var(key.as_ref()).ok();
+        log::trace!("Environmental variable, {}, is {:?}", key, value);
+        return value;
     }
 
     // Retrives a environment variable from the os or from a table if in testing mode (os version)
     #[cfg(test)]
-    pub fn get_env_os<K: AsRef<str>>(&self, key: K) -> Option<OsString> {
+    pub fn get_env_os<K: AsRef<str> + std::fmt::Display>(&self, key: K) -> Option<OsString> {
         self.env.get(key.as_ref()).map(OsString::from)
     }
 
     #[cfg(not(test))]
     #[inline]
-    pub fn get_env_os<K: AsRef<str>>(&self, key: K) -> Option<OsString> {
-        env::var_os(key.as_ref())
+    pub fn get_env_os<K: AsRef<str> + std::fmt::Display>(&self, key: K) -> Option<OsString> {
+        let value = env::var_os(key.as_ref());
+        log::trace!("Environmental Variable, {}, is {:?}", key, value);
+        return value;
     }
 
     /// Convert a `~` in a path to the home directory
