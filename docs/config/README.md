@@ -275,6 +275,10 @@ modules you explicitly add to the format will not be duplicated. Eg.
 format = "$all$directory$character"
 ```
 
+## Ansible
+
+The `ansible` module shows the current Ansible context.
+
 ## AWS
 
 The `aws` module shows the current AWS region and profile when
