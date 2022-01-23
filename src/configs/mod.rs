@@ -1,6 +1,7 @@
 use indexmap::IndexMap;
 use serde::{self, Deserialize, Serialize};
 
+pub mod ansible;
 pub mod aws;
 pub mod azure;
 pub mod battery;
@@ -89,6 +90,8 @@ pub struct FullConfig<'a> {
     #[serde(flatten)]
     root: StarshipRootConfig,
     // modules
+    #[serde(borrow)]
+    ansible: ansible::AnsibleConfig<'a>,
     #[serde(borrow)]
     aws: aws::AwsConfig<'a>,
     #[serde(borrow)]

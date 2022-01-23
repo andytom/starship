@@ -1,4 +1,5 @@
 // While adding out new module add out module to src/module.rs ALL_MODULES const array also.
+mod ansible;
 mod aws;
 mod azure;
 mod buf;
@@ -90,6 +91,7 @@ pub fn handle<'a>(module: &str, context: &'a Context) -> Option<Module<'a>> {
         match module {
             // Keep these ordered alphabetically.
             // Default ordering is handled in configs/starship_root.rs
+            "ansible" => ansible::module(context),
             "aws" => aws::module(context),
             "azure" => azure::module(context),
             #[cfg(feature = "battery")]
@@ -190,6 +192,7 @@ pub fn handle<'a>(module: &str, context: &'a Context) -> Option<Module<'a>> {
 
 pub fn description(module: &str) -> &'static str {
     match module {
+        "ansible" => "The current Ansible version",
         "aws" => "The current AWS region and profile",
         "azure" => "The current Azure subscription",
         "battery" => "The current charge of the device's battery and its current charging status",
