@@ -13,6 +13,8 @@ diverged = "<>"
 renamed = "r"
 deleted = "x"
 
+[ansible]
+symbol = "ansible "
 [aws]
 symbol = "aws "
 
