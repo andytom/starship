@@ -287,7 +287,7 @@ named `host_vars` or `group_vars` exists in the current directory.
 
 | Option              | Default                                      | Description                                                               |
 | ------------------- | -------------------------------------------- | ------------------------------------------------------------------------- |
-| `format`            | `"via [$symbol($version )]($style)"`         | The format for the module.                                                |
+| `format`            | `"via [$symbol($version)]($style) "`         | The format for the module.                                                |
 | `version_format`    | `"v${raw}"`                                  | The version format. Available vars are `raw`, `major`, `minor`, & `patch` |
 | `detect_extensions` | `[]`                                         | Which extensions should trigger this module.                              |
 | `detect_files`      | `["ansible.cfg", "galaxy-requirements.txt"]` | Which filenames should trigger this module.                               |

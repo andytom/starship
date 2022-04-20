@@ -1,11 +1,11 @@
-use super::{Context, Module, RootModuleConfig};
+use super::{Context, Module, ModuleConfig};
 use crate::configs::ansible::AnsibleConfig;
 use crate::formatter::{StringFormatter, VersionFormatter};
 
 /// Creates a module with the current Ansible version.
 pub fn module<'a>(context: &'a Context) -> Option<Module<'a>> {
     let mut module = context.new_module("ansible");
-    let config = AnsibleConfig::try_load(module.config);
+    let config: AnsibleConfig = AnsibleConfig::try_load(module.config);
 
     let is_ansible_project = context
         .try_begin_scan()?
@@ -105,7 +105,7 @@ mod tests {
 
         let actual = ModuleRenderer::new("ansible").path(dir.path()).collect();
 
-        let expected = Some(format!("via {}", Color::White.bold().paint("Ⓐ v2.1.3")));
+        let expected = Some(format!("via {} ", Color::White.bold().paint("Ⓐ v2.1.3")));
         assert_eq!(expected, actual);
         dir.close()
     }
